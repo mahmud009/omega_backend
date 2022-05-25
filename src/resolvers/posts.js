@@ -1,9 +1,9 @@
-import { PostModel } from "../models/Post";
+import { PostModel } from "src/models/Post";
 
 const getPosts = async () => {
   try {
     return await PostModel.find();
-  } catch (error: any) {
+  } catch (error) {
     throw new Error(error);
   }
 };

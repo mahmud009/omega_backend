@@ -12,7 +12,7 @@ const server = new ApolloServer({
 
 // Connecting mongodb and listening to the port on success
 mongoose
-  .connect(process.env.MONGODB_CONNECT_URL as string)
+  .connect(process.env.MONGODB_CONNECT_URL)
   .then(() => {
     console.log("MongoDB connected.");
     server.listen({ port: 5303 }).then((res) => {
