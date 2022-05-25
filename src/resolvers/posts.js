@@ -8,7 +8,7 @@ const getPosts = async () => {
   }
 };
 
-export const PostResolvers = {
+export const postResolvers = {
   Query: {
     getPosts,
   },
