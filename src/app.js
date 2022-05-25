@@ -1,8 +1,8 @@
 import { ApolloServer } from "apollo-server";
-import { typeDefs } from "./graphql/typeDefs";
+import { typeDefs } from "src/graphql/typeDefs";
 import mongoose from "mongoose";
 import "dotenv/config";
-import { resolvers } from "./resolvers";
+import { resolvers } from "src/resolvers";
 
 // Apollo graphql server instance
 const server = new ApolloServer({
