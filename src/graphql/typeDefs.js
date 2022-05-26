@@ -11,19 +11,21 @@ export const typeDefs = gql`
   type User {
     id: ID!
     email: String!
+    name: String!
+    phone: String!
     token: String!
-    userName: String!
     createdAt: String!
   }
 
   input RegisterInput {
-    userName: String!
+    name: String!
+    email: String!
+    phone: String!
     password: String!
     confirmPassword: String!
-    email: String!
   }
   input LoginInput {
-    userName: String!
+    email: String!
     password: String!
   }
 

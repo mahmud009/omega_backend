@@ -3,9 +3,10 @@ import { model, Schema } from "mongoose";
 export const UserModel = model(
   "User",
   new Schema({
-    userName: String,
+    name: String,
+    email: { type: String, unique: true },
+    phone: { type: String, unique: true },
     password: String,
-    email: String,
     createdAt: { type: String, default: new Date().toISOString() },
   })
 );
