@@ -4,8 +4,8 @@ export const PostModel = model(
   "Post",
   new Schema({
     body: String,
-    userName: String,
     createdAt: { type: String, default: new Date().toISOString() },
+    userId: String,
     comments: [
       {
         body: String,
@@ -19,9 +19,5 @@ export const PostModel = model(
         createdAt: { type: String, default: new Date().toISOString() },
       },
     ],
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "users",
-    },
   })
 );

@@ -3,7 +3,7 @@ import { UserModel } from "src/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { LoginValidate, RegisterValidate } from "../utils/validators";
+import { LoginValidate, RegisterValidate } from "src/utils/validators";
 dotenv.config();
 
 function createToken({ id, email, name, phone }) {
@@ -19,7 +19,7 @@ async function register(_, args, context, info) {
     // Validate user data
     const { isValid, errors } = await RegisterValidate(registerInput);
     if (!isValid) {
-      return new UserInputError("Input Error", { errors });
+      throw new UserInputError("Input Error", { errors });
     }
     user.password = await bcrypt.hash(user.password, 12);
     const newUser = new UserModel(user);
@@ -27,7 +27,7 @@ async function register(_, args, context, info) {
     const token = createToken(res);
     return { ...res._doc, id: res._id, token };
   } catch (error) {
-    return new Error(error);
+    throw new Error(error);
   }
 }
 
@@ -41,19 +41,19 @@ async function login(_, args, context, info) {
 
     if (!user) {
       errors.general = "User not found";
-      return new Error("User not found", { errors });
+      throw new Error("User not found", { errors });
     }
 
     const isValidPassword = await bcrypt.compare(loginInput.password, user.password);
     if (!isValidPassword) {
       errors.general = "Wrong Credentials";
-      return new Error("Wrong Credentials", { errors });
+      throw new Error("Wrong Credentials", { errors });
     }
 
     const token = createToken(user);
     return { ...user._doc, id: user._id, token };
   } catch (error) {
-    return new Error(error);
+    throw new Error(error);
   }
 }
 

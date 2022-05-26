@@ -2,12 +2,13 @@ import { ApolloServer } from "apollo-server";
 import { typeDefs } from "src/graphql/typeDefs";
 import mongoose from "mongoose";
 import "dotenv/config";
-import { resolvers } from "src/resolvers";
+import { resolvers } from "src/graphql/resolvers";
 
 // Apollo graphql server instance
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ req }),
 });
 
 // Connecting mongodb and listening to the port on success

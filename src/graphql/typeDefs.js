@@ -5,7 +5,7 @@ export const typeDefs = gql`
     id: ID!
     body: String!
     createdAt: String!
-    userName: String!
+    userId: String!
   }
 
   type User {
@@ -31,9 +31,12 @@ export const typeDefs = gql`
 
   type Query {
     getPosts: [Post]
+    getPost(postId: ID): Post
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
     login(loginInput: LoginInput): User!
+    createPost(body: String!): Post!
+    deletePost(postId: ID!): String!
   }
 `;
