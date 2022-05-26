@@ -5,18 +5,18 @@ export const PostModel = model(
   new Schema({
     body: String,
     userName: String,
-    createdAt: String,
+    createdAt: { type: String, default: new Date().toISOString() },
     comments: [
       {
         body: String,
         userName: String,
-        createdAt: String,
+        createdAt: { type: String, default: new Date().toISOString() },
       },
     ],
     likes: [
       {
         userName: String,
-        createdAt: String,
+        createdAt: { type: String, default: new Date().toISOString() },
       },
     ],
     user: {

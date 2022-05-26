@@ -6,6 +6,6 @@ export const UserModel = model(
     userName: String,
     password: String,
     email: String,
-    createdAt: String,
+    createdAt: { type: String, default: new Date().toISOString() },
   })
 );

@@ -18,7 +18,8 @@
     "mongoose": "^6.3.4",
     "sqlite3": "^5.0.8",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.3.6"
+    "typeorm": "^0.3.6",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
